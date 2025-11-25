@@ -13,21 +13,21 @@ export default function Lobby({
 }) {
   const { Canvas } = useQRCode()
   const [gameCode, setGameCode] = useState<string>("")
+  const [baseUrl, setBaseUrl] = useState<string>("")
   
   // Fetch the game code on component mount
   useEffect(() => {
+    setBaseUrl(typeof window !== 'undefined' ? window.location.origin : '')
     const fetchGameCode = async () => {
       const { data, error } = await supabase
         .from('games')
         .select('game_code')
         .eq('id', gameId)
         .single()
-      
       if (data && !error) {
-        setGameCode(data.game_code ?? "") // Dodaj ?? "" aby obsłużyć null
+        setGameCode(data.game_code ?? "")
       }
     }
-    
     fetchGameCode()
   }, [gameId])
 
@@ -56,11 +56,12 @@ export default function Lobby({
             <br />
             <a
               className="text-blue-500"
-              href={`https://schave.vercel.app/game/${gameCode || '...'}`}
+              href={`${(baseUrl || 'https://schave.vercel.app')}/game/${gameCode || '...'}`}
+
               target="_blank"
               rel="noopener noreferrer"
             >
-              https://schave.vercel.app/game/{gameCode || '...'}
+              {(baseUrl || 'https://schave.vercel.app')}/game/{gameCode || '...'}
             </a>
           </h2>
       <div className="flex justify-between m-auto p-12">
@@ -80,7 +81,7 @@ export default function Lobby({
         <div className="pl-4">
           {gameCode && (
             <Canvas
-              text={`https://schave.vercel.app/game/${gameCode}`}
+              text={`${(baseUrl || 'https://schave.vercel.app')}/game/${gameCode}`}
               options={{
                 errorCorrectionLevel: 'M',
                 margin: 3,
