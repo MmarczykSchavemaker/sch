@@ -6,7 +6,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Schavemaker Open Day Quiz',
+  title: 'Schavemaker Christmas Quiz',
   description: 'OSS Kahoot Alternative powered by Supabase',
 }
 

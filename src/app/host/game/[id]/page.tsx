@@ -153,14 +153,14 @@ export default function Home({
 
   if (loading) {
     return (
-      <div className="bg-green-600 min-h-screen flex items-center justify-center">
+      <div className="bg-navy min-h-screen flex items-center justify-center">
         <div className="text-white text-2xl">Loading game...</div>
       </div>
     )
   }
 
   return (
-    <main className="bg-green-600 min-h-screen">
+    <main className="bg-navy min-h-screen">
       {currentScreen == AdminScreens.lobby && gameId && (
         <Lobby participants={participants} gameId={gameId}></Lobby>
       )}

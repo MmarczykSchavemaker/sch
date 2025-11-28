@@ -52,7 +52,7 @@ export default function Quiz({
   }
 
   return (
-    <div className="h-screen flex flex-col items-stretch bg-navy relative">
+    <div className="h-screen flex flex-col items-stretch bg-quiz-bg bg-cover bg-center bg-no-repeat relative">
       <div className="text-center">
         <h2
           className="

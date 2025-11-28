@@ -96,7 +96,7 @@ export default function Quiz({
   }, [question.id])
 
   return (
-    <div className="h-screen flex flex-col items-stretch bg-navy relative">
+    <div className="h-screen flex flex-col items-stretch bg-quiz-bg bg-cover bg-center bg-no-repeat relative">
       {/* Next-button: tylko gdy odpowiedź odkryta */}
       {isAnswerRevealed && (
         <div className="absolute top-4 right-4 z-20">
